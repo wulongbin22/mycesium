@@ -9,7 +9,7 @@ export default class Viewer{
         // cesium默认资源路径
         (window as any).CESIUM_BASE_URL = "/";
         // 设置默认的视角为中国
-        Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(
+          Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(
         // 西边经度
         89.5,
         // 南边维度
