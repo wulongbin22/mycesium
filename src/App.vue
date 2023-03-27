@@ -49,13 +49,6 @@ export default {
   mounted(){
          viewer = new Viewer()
     
-      // 设置沙箱允许使用JS
-      var iframe = document.getElementsByClassName("cesium-infoBox-iframe")[0];
-      iframe.setAttribute(
-        "sandbox",
-        "allow-same-origin allow-scripts allow-popups allow-forms"
-      );
-      iframe.setAttribute("src", "");
 
     viewer.createBuild('OSGB/tileset.json').then(() => {
       this.isInit=true;

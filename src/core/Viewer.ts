@@ -40,6 +40,15 @@ export default class Viewer{
             // 是否显示时间轴
             timeline: false,
           });
+
+          // 设置沙箱允许使用JS
+      const iframe = document.getElementsByClassName("cesium-infoBox-iframe")[0];
+      iframe.setAttribute(
+        "sandbox",
+        "allow-same-origin allow-scripts allow-popups allow-forms"
+      );
+      iframe.setAttribute("src", "");
+
           (this.viewer.cesiumWidget.creditContainer as any).style.display = "none";
 
           this.scene = this.viewer.scene;

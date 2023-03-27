@@ -1,24 +1,24 @@
 //利用translation对模型的经度、纬度、高度进行修改
 
 import * as Cesium from "cesium";
-export function translation(tileset,longitude, latitude, height)
-{
-        //3dtile模型的边界球体
-        var boundingSphere = tileset.boundingSphere;
-        //迪卡尔空间直角坐标=>地理坐标（弧度制）
-        var cartographic_original = Cesium.Cartographic.fromCartesian(boundingSphere.center);
-        //设置新的经度、纬度、高度
-        var cartographic_offset  = Cesium.Cartographic.fromDegrees(longitude, latitude, height)
-        //地理坐标（弧度制）=>迪卡尔空间直角坐标
-        var Cartesian3_original = Cesium.Cartesian3.fromRadians(cartographic_original.longitude, cartographic_original.latitude, cartographic_original.height);
-        var Cartesian3_offset  = Cesium.Cartesian3.fromRadians(cartographic_offset.longitude, cartographic_offset.latitude, cartographic_offset.height);
-        //获得地面和offset的转换
-        var translation = Cesium.Cartesian3.subtract(Cartesian3_offset, Cartesian3_original, new Cesium.Cartesian3());
-        //修改模型矩阵
-        tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
-}
+// export function translation(tileset,longitude, latitude, height)
+// {
+//         //3dtile模型的边界球体
+//         var boundingSphere = tileset.boundingSphere;
+//         //迪卡尔空间直角坐标=>地理坐标（弧度制）
+//         var cartographic_original = Cesium.Cartographic.fromCartesian(boundingSphere.center);
+//         //设置新的经度、纬度、高度
+//         var cartographic_offset  = Cesium.Cartographic.fromDegrees(longitude, latitude, height)
+//         //地理坐标（弧度制）=>迪卡尔空间直角坐标
+//         var Cartesian3_original = Cesium.Cartesian3.fromRadians(cartographic_original.longitude, cartographic_original.latitude, cartographic_original.height);
+//         var Cartesian3_offset  = Cesium.Cartesian3.fromRadians(cartographic_offset.longitude, cartographic_offset.latitude, cartographic_offset.height);
+//         //获得地面和offset的转换
+//         var translation = Cesium.Cartesian3.subtract(Cartesian3_offset, Cartesian3_original, new Cesium.Cartesian3());
+//         //修改模型矩阵
+//         tileset.modelMatrix = Cesium.Matrix4.fromTranslation(translation);
+// }
 
-export function changeHeight(tileset,x,y,height) {
+export function changeHeight(tileset:any ,x,y,height) {
         height = Number(height);
         if (isNaN(height)) {
             return;
@@ -54,8 +54,8 @@ export function changeHeight(tileset,x,y,height) {
         tileset.modelMatrix = Cesium.Matrix4.fromTranslation(world_translation); // 构造平移矩阵并赋值
 }
 
-export function showPosition(viewer){
-        const entity = viewer.entities.add({
+export function showPosition(viewer:Cesium.Viewer){
+        const entity:any = viewer.entities.add({
                 label: {
                   show: false,
                   showBackground: true,
@@ -68,7 +68,7 @@ export function showPosition(viewer){
           
               // Mouse over the globe to see the cartographic position
               
-           let handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+           const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
               handler.setInputAction(function (movement) {
                 const cartesian = viewer.camera.pickEllipsoid(
                   movement.position,
