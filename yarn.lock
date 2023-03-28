@@ -303,6 +303,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@gvol-org/daassdk.cesium@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmmirror.com/@gvol-org/daassdk.cesium/-/daassdk.cesium-1.0.6.tgz#187a158fae0879504fefbcb7455f7b8d11f4b846"
+  integrity sha512-/wkX05g9mZvfxBBHGFHUg6/p8vtPZhrdiOUXGcAwCVtSdyC/bhcBqdrSGRo3up3ZSpt2jFQcYLsF8jGVOPNJQA==
+  dependencies:
+    cesium "^1.102.0"
+
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.npmmirror.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
@@ -1588,7 +1595,7 @@ case-sensitive-paths-webpack-plugin@^2.3.0:
   resolved "https://registry.npmmirror.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz#db64066c6422eed2e08cc14b986ca43796dbc6d4"
   integrity sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==
 
-cesium@^1.103.0:
+cesium@^1.102.0, cesium@^1.103.0:
   version "1.103.0"
   resolved "https://registry.npmmirror.com/cesium/-/cesium-1.103.0.tgz#46af9c7789bf38d583e12c70cfeb9f78281a3e72"
   integrity sha512-BoZx7Op/BYd8p8rBDnuv/u7b/yg2WpK3WBfrAKceemU1pv2QlMrFNBxKnd3PWHSUgJZc/yHtP7YrX5pIn7JSgA==

@@ -54,10 +54,11 @@ export default {
       this.isInit=true;
       this.onOffChange()         
     });
-    
+     
+
 
     showPosition(viewer.viewer)
-
+    // console.log('》》》', layer, instance.getLayerByName('yingxiang'))
     // viewer.camera.flyTo({
     //   destination: Cesium.Cartesian3.fromDegrees(116.39, 39.9, 1000),
     //   orientation: {

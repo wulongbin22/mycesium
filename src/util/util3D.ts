@@ -60,9 +60,10 @@ export function showPosition(viewer:Cesium.Viewer){
                   show: false,
                   showBackground: true,
                   font: "14px monospace",
-                  horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+                  horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
                   verticalOrigin: Cesium.VerticalOrigin.TOP,
                   pixelOffset: new Cesium.Cartesian2(15, 0),
+                  disableDepthTestDistance:Number.POSITIVE_INFINITY
                 },
               });
           
@@ -112,6 +113,7 @@ export function createPOI(viewer,pos){
         billboard: {
                 image: 'myAssets/icon.png',
                 verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+                disableDepthTestDistance:Number.POSITIVE_INFINITY
         },
         });
 

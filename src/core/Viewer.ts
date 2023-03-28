@@ -1,5 +1,8 @@
 
 import * as Cesium from "cesium";
+import { useCesium } from '@gvol-org/daassdk.cesium';
+(window as any).Cesium =Cesium
+
 export default class Viewer{
     viewer:Cesium.Viewer;
     scene:Cesium.Scene;
@@ -41,6 +44,8 @@ export default class Viewer{
             timeline: false,
           });
 
+          console.log("this.viewer",this.viewer.imageryLayers);
+
           // 设置沙箱允许使用JS
       const iframe = document.getElementsByClassName("cesium-infoBox-iframe")[0];
       iframe.setAttribute(
@@ -48,10 +53,24 @@ export default class Viewer{
         "allow-same-origin allow-scripts allow-popups allow-forms"
       );
       iframe.setAttribute("src", "");
+      (this.viewer.cesiumWidget.creditContainer as any).style.display = "none";
+      this.scene = this.viewer.scene;
 
-          (this.viewer.cesiumWidget.creditContainer as any).style.display = "none";
+      const instance = useCesium(this.viewer);
+    
+      //添加星图图层
+      instance.addLayer({
+          name: 'yingxiang',
+          index: 0,
+          baseUrl: "https://tiles1.geovisearth.com/base/v1/img/{z}/{x}/{y}",
+          tmsIds: "w",
+          visible:true,
+          format:'webp',
+          token: "bf78bb0fe9bf35f87c6d4c9b4ac4a3a69fbccb87f90712777936e9a662c9718e",
+          minimumLevel: 0,
+          maximumLevel: 18,
+      } as any);
 
-          this.scene = this.viewer.scene;
     }
 
     createBuild(url:string){
@@ -64,7 +83,15 @@ export default class Viewer{
       
           return this.build.readyPromise.then((tileset) => {
               this.viewer.zoomTo(tileset);
+              tileset.style = new Cesium.Cesium3DTileStyle({
+                color: "rgba(255, 0, 0, 0.5)",
+              });
               return tileset
           });
     }
+
+    // changeMapLayer(data){
+    //   this.viewer.imageryLayers.removeAll();
+    //   this.viewer.imageryLayers.add()
+    // }
 }
