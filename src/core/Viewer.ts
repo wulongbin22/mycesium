@@ -62,7 +62,7 @@ export default class Viewer{
       instance.addLayer({
           name: 'yingxiang',
           index: 0,
-          baseUrl: "https://tiles.geovisearth.com/base/v1/img/{z}/{x}/{y}",
+          baseUrl: "https://tiles1.geovisearth.com/base/v1/img/{z}/{x}/{y}",
           tmsIds: "w",
           visible:true,
           format:'webp',
@@ -83,9 +83,9 @@ export default class Viewer{
       
           return this.build.readyPromise.then((tileset) => {
               this.viewer.zoomTo(tileset);
-              // tileset.style = new Cesium.Cesium3DTileStyle({
-              //   color: "rgba(255, 0, 0, 0.5)",
-              // });
+              tileset.style = new Cesium.Cesium3DTileStyle({
+                color: "rgba(255, 0, 0, 0.5)",
+              });
               return tileset
           });
     }
