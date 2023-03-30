@@ -56,6 +56,23 @@ export default class Viewer{
       (this.viewer.cesiumWidget.creditContainer as any).style.display = "none";
       this.scene = this.viewer.scene;
 
+      this.viewer.imageryLayers.removeAll();
+      this.viewer.imageryLayers.addImageryProvider(
+        new Cesium.WebMapTileServiceImageryProvider({
+            //影像底图
+            url:
+                'http://{s}.tianditu.gov.cn/img_c/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={x}&TILECOL={y}&tk='+'589d716f51345fac17b7942ab3eb62e5',
+            // subdomains: subdomains,//URL模板中用于{s}占位符的子域。如果该参数是单个字符串，则字符串中的每个字符都是一个子域。如果它是一个数组，数组中的每个元素都是一个子域
+            layer: "tdtAnnoLayer",
+            style: 'default',
+            format: "image/jpeg",
+            subdomains: ["t0", "t1", "t2", "t3", "t4", "t5", "t6", "t7"],
+            tileMatrixSetID: 'GoogleMapsCompatible', //使用谷歌的瓦片切片方式
+            show: true
+        } as any)
+    );
+    return;
+
       const instance = useCesium(this.viewer);
     
       //添加星图图层
