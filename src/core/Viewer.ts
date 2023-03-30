@@ -83,9 +83,9 @@ export default class Viewer{
       
           return this.build.readyPromise.then((tileset) => {
               this.viewer.zoomTo(tileset);
-              tileset.style = new Cesium.Cesium3DTileStyle({
-                color: "rgba(255, 0, 0, 0.5)",
-              });
+              // tileset.style = new Cesium.Cesium3DTileStyle({
+              //   color: "rgba(255, 0, 0, 0.5)",
+              // });
               return tileset
           });
     }
