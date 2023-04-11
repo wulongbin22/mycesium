@@ -53,6 +53,7 @@ export default class Viewer{
         "allow-same-origin allow-scripts allow-popups allow-forms"
       );
       iframe.setAttribute("src", "");
+      (iframe as any).value = '';
       (this.viewer.cesiumWidget.creditContainer as any).style.display = "none";
       this.scene = this.viewer.scene;
 
@@ -109,7 +110,8 @@ export default class Viewer{
           this.viewer.zoomTo(  this.build);
       
           return this.build.readyPromise.then((tileset) => {
-              this.viewer.zoomTo(tileset);
+            // document.activeElement()
+              setTimeout(()=>{this.viewer.zoomTo(tileset)},100);
               // tileset.style = new Cesium.Cesium3DTileStyle({
               //   color: "rgba(255, 0, 0, 0.5)",
               // });
